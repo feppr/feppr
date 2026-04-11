@@ -675,7 +675,7 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
     <div class="division-card reveal" onclick="document.getElementById('realty').scrollIntoView({behavior:'smooth'})">
       <span class="div-num">01</span>
       <div class="div-tag">FEP División</div>
-      <div class="div-title">Bienes Raíces<br>+ Rehab</div>
+      <div class="div-title">Bienes Raíces<br></div>
       <p class="div-desc">Compra, venta y rehabilitación de propiedades en Puerto Rico. FEP Realty y FEP Rehab trabajan juntos para encontrar valor donde otros no lo ven.</p>
     </div>
     <div class="division-card reveal" style="animation-delay:.1s" onclick="document.getElementById('contabilidad').scrollIntoView({behavior:'smooth'})">
@@ -707,7 +707,10 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
     <span class="label">FEP Realty — Propiedades en Venta</span>
     <div class="props-grid" style="grid-template-columns:repeat(2,1fr)">
       <div class="prop-card">
-        <div class="prop-img"><span class="prop-status">En Venta</span><span class="prop-icon">⌂</span></div>
+        <div class="prop-img" style="padding:0">
+  <span class="prop-status">En Venta</span>
+  <img src="images/guayama-terreno.jpg" alt="Terreno en Carite, Guayama" style="width:100%;height:100%;object-fit:cover">
+</div>
         <div class="prop-body">
           <div class="prop-location">Guayama, Puerto Rico</div>
           <div class="prop-name">Terreno en Caribe</div>
@@ -744,6 +747,7 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
       <div class="sold-card"><div class="sold-year">2026</div><div class="sold-addr">Guayama, PR</div><div class="sold-price">$45K</div></div>
       <div class="sold-card"><div class="sold-year">2025</div><div class="sold-addr">Guayama, PR</div><div class="sold-price">$106K</div></div>
       <div class="sold-card"><div class="sold-year">2025</div><div class="sold-addr">Guayama, PR</div><div class="sold-price">$72K</div></div>
+       <div class="sold-card"><div class="sold-year">2025</div><div class="sold-addr">Guayama, PR</div><div class="sold-price">$55K</div></div>
       <div class="sold-card"><div class="sold-year">2025</div><div class="sold-addr">Guayama, PR</div><div class="sold-price">$1,500<span style="font-size:.65rem;color:var(--ash);display:block;margin-top:.2rem">/mes</span></div></div>
       <div class="sold-card" style="background:rgba(201,169,110,.04);border:.5px dashed rgba(201,169,110,.18);display:flex;align-items:center;justify-content:center">
         <div style="text-align:center"><div style="font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(201,169,110,.35)">Próximo<br>cierre</div></div>
@@ -761,8 +765,14 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
 
     <div class="project reveal">
       <div class="ba-grid">
-        <div class="ba-panel ba-before"><div class="ba-label">Antes</div><div class="ba-placeholder">⌂</div></div>
-        <div class="ba-panel ba-after"><div class="ba-label">Después</div><div class="ba-placeholder" style="opacity:.15;color:var(--terra)">⌂</div></div>
+       <div class="ba-panel ba-before" style="padding:0;position:relative">
+  <span class="ba-label" style="position:absolute;top:1rem;left:1rem;z-index:2">Antes</span>
+  <img src="images/proyecto001-antes.jpg" alt="Antes" style="width:100%;height:100%;object-fit:cover">
+</div>
+<div class="ba-panel ba-after" style="padding:0;position:relative">
+  <span class="ba-label" style="position:absolute;top:1rem;left:1rem;z-index:2">Después</span>
+  <img src="images/proyecto001-despues.jpg" alt="Después" style="width:100%;height:100%;object-fit:cover">
+</div>
       </div>
       <div class="proj-info">
         <div class="proj-num">001</div>
@@ -1064,7 +1074,7 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
       <div class="portrait-initials">RV</div>
       <div class="portrait-tag">
         <div class="portrait-name">Rafael Valentín Bermúdez</div>
-        <div class="portrait-role">Fundador · Corredor de Bienes Raíces</div>
+        <div class="portrait-role">Fundador · Corredor de Bienes Raíces · Contable</div>
       </div>
     </div>
     <div>
@@ -1072,7 +1082,7 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
       <h2 class="about-title">Esto no fue<br>accidente.<br>Fue construcción.</h2>
       <div class="divider-line"></div>
       <div class="about-content">
-        <p>Tengo 24 años, me gradué en contabilidad y soy corredor de bienes raíces. Pero FIRME EN PROPÓSITO no nació de un título ni de un logro. Nació de una decisión: la decisión de construir algo real, con propósito, con base y con visión a largo plazo.</p>
+        <p>Tengo 24 años, soy contable y corredor de bienes raíces. Pero FIRME EN PROPÓSITO no nació de un título ni de un logro. Nació de una decisión: la decisión de construir algo real, con propósito, con base y con visión a largo plazo.</p>
         <p>Empecé joven porque entendí algo temprano: que el tiempo es el activo más valioso, y que la disciplina es la única inversión que siempre da retorno. Cada transacción que cierro, cada propiedad que rehabilito y cada persona que asesoro forma parte de algo más grande que yo.</p>
         <p>No soy un "guru". No tengo fórmulas mágicas. Tengo trabajo, educación, honestidad y el compromiso de crecer junto a las personas que confían en mí. FIRME EN PROPÓSITO es lo que soy, lo que construyo y lo que quiero dejar en Puerto Rico.</p>
       </div>
@@ -1118,14 +1128,32 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
   <h2 class="serif" style="font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;color:var(--bone);line-height:1.2;margin-bottom:.75rem">Lo que dicen quienes<br>han trabajado conmigo.</h2>
   <div class="t-grid reveal">
     <div class="t-card">
-      <p class="t-quote">"Rafael fue transparente desde el primer día. Nos explicó todo el proceso y cerró nuestra venta en tiempo récord. No fue solo nuestro agente, fue nuestro asesor."</p>
+      <p class="t-quote">"I love you mannnn. Gracias. Tan pronto tengamos una fecha concreta de cuando vamos a viajar te dejaré saber con anticipación para vernos por allí. Again, Thank you for everything."</p>
       <div class="t-author">
-        <div class="t-avatar">MR</div>
-        <div><div class="t-name">M. Rivera</div><div class="t-detail">Vendedor · Bayamón, PR</div></div>
+        <div class="t-avatar">RO</div>
+        <div><div class="t-name">R. Ortiz</div><div class="t-detail">Comprador · Guayama, PR</div></div>
       </div>
     </div>
-    <div class="t-card t-placeholder"><div class="t-placeholder-text">Tu testimonio<br>aquí pronto</div></div>
-    <div class="t-card t-placeholder"><div class="t-placeholder-text">Tu testimonio<br>aquí pronto</div></div>
+    <div class="t-card">
+  <p class="t-quote">"Excelente trabajo KID. Tú vas a ser grande en esto, gracias."</p>
+  <div class="t-author">
+    <div class="t-avatar">JL</div>
+    <div>
+      <div class="t-name">C. Cruz</div>
+      <div class="t-detail">Vendedor · Guayama, PR</div>
+    </div>
+  </div>
+</div>
+    <div class="t-card">
+  <p class="t-quote">"Rafy. Gracias por todo tu esfuerzo y gestión, estamos bien agradecidos por todo. Haz sido buen comunicador. Gracias."</p>
+  <div class="t-author">
+    <div class="t-avatar">NS</div>
+    <div>
+      <div class="t-name">J. & N. Santini</div>
+      <div class="t-detail">Comprador · Guayama, PR</div>
+    </div>
+  </div>
+</div>
   </div>
 </section>
 
