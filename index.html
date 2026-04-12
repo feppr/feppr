@@ -1261,14 +1261,30 @@ document.getElementById('leadsForm').addEventListener('submit',function(e){
   if(!document.getElementById('fConsent').checked||!validateLeads())return;
   const btn=document.getElementById('fSubmit');
   btn.disabled=true;btn.textContent='Enviando...';
-  // ── INTEGRATION POINT: replace setTimeout with fetch('/api/leads', {...}) ──
-  setTimeout(()=>{
-    this.style.display='none';
-    const s=document.getElementById('fSuccess');
-    s.style.display='block';
-    s.classList.add('visible');
-    s.scrollIntoView({behavior:'smooth',block:'center'});
-  },900);
+  const formData=new FormData(this);
+  const payload={};
+  for(const[k,v]of formData.entries()){payload[k]=v;}
+  fetch('https://formspree.io/f/mjgjbrwv',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(payload)
+  })
+  .then(res=>{
+    if(res.ok){
+      this.style.display='none';
+      const s=document.getElementById('fSuccess');
+      s.style.display='block';
+      s.classList.add('visible');
+      s.scrollIntoView({behavior:'smooth',block:'center'});
+    } else {
+      btn.disabled=false;btn.textContent='Enviar mi Consulta →';
+      alert('Hubo un error. Intenta de nuevo.');
+    }
+  })
+  .catch(()=>{
+    btn.disabled=false;btn.textContent='Enviar mi Consulta →';
+    alert('Hubo un error de conexión. Intenta de nuevo.');
+  });
 });
 
 /* PHONE FORMAT */
@@ -1283,11 +1299,19 @@ document.getElementById('fTel').addEventListener('input',function(){
 function handleAgenda(){
   const n=document.getElementById('agNombre').value.trim();
   const e=document.getElementById('agEmail').value.trim();
-  if(!n||!e)return;
-  // ── INTEGRATION POINT ──
-  document.getElementById('agSuccess').style.display='block';
+  const t=document.getElementById('agTema').value;
+  if(!n||!e){alert('Por favor completa nombre y correo.');return;}
+  fetch('https://formspree.io/f/mjgjbrwv',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({nombre:n,email:e,tema:t,formulario:'Agenda 1:1'})
+  })
+  .then(res=>{
+    if(res.ok) document.getElementById('agSuccess').style.display='block';
+    else alert('Hubo un error. Intenta de nuevo.');
+  })
+  .catch(()=>alert('Error de conexión. Intenta de nuevo.'));
 }
-
 /* CS EMAIL */
 function handleCsEmail(){
   const e=document.getElementById('csEmail').value.trim();
