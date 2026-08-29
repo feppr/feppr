@@ -3,9 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="FIRME EN PROPÓSITO — Bienes Raíces, Rehabilitación y Finanzas en Puerto Rico. Rafael Valentín Bermúdez.">
-<title>Firme en Propósito — Puerto Rico</title>
+<meta name="description" content="Bienes raíces en Guayama y terrenos en Puerto Rico con FIRME EN PROPÓSITO. Compra, venta y rehabilitación de propiedades abandonadas — evaluadas con un método propio de 6 dimensiones. Fundado por Rafael Valentín Bermúdez.">
+<meta name="theme-color" content="#0A0A08">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://feppr.com/">
+<title>Firme en Propósito — Bienes Raíces y Terrenos en Guayama, Puerto Rico</title>
+
+<!-- Open Graph / social preview. TODO FEP: reemplazar og-image.jpg con una foto real (1200x630) de una propiedad o del fundador. -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://feppr.com/">
+<meta property="og:title" content="Firme en Propósito — Bienes Raíces, Rehabilitación y Finanzas en PR">
+<meta property="og:description" content="No es un nombre. Es una declaración. Bienes raíces, rehabilitación de propiedades abandonadas y finanzas construidas con propósito desde Guayama, Puerto Rico.">
+<meta property="og:image" content="https://feppr.com/og-image.jpg">
+<meta property="og:locale" content="es_PR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Firme en Propósito — Puerto Rico">
+<meta name="twitter:description" content="Bienes raíces, rehabilitación y finanzas con propósito. Guayama, Puerto Rico.">
+<meta name="twitter:image" content="https://feppr.com/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- SEO local structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Firme en Propósito",
+  "alternateName": "FEP",
+  "url": "https://feppr.com/",
+  "description": "Bienes raíces, rehabilitación de propiedades abandonadas y finanzas en Puerto Rico. Compra y venta de terrenos, fincas y propiedades comerciales y residenciales.",
+  "founder": {
+    "@type": "Person",
+    "name": "Rafael Valentín Bermúdez",
+    "jobTitle": "Corredor de Bienes Raíces y Contable"
+  },
+  "areaServed": [
+    {"@type":"City","name":"Guayama"},
+    {"@type":"City","name":"Ponce"},
+    {"@type":"City","name":"Cayey"},
+    {"@type":"AdministrativeArea","name":"Puerto Rico"}
+  ],
+  "slogan": "No es un nombre. Es una declaración."
+}
+</script>
 <style>
 /* ═══════════════════════════════════════
    RESET & ROOT
@@ -27,9 +69,14 @@
   --border:rgba(212,196,168,0.15);
   --border-mid:rgba(212,196,168,0.28);
   --success:#4A7C59;
+  --pr-blue:#4FA6DC;
+  --pr-blue-dim:rgba(79,166,220,.16);
+  --pr-red:#C8102E;
+  --header-h:88px;
 }
 html{scroll-behavior:smooth;font-size:16px}
 body{background:var(--noir);color:var(--bone);font-family:'Outfit',sans-serif;overflow-x:hidden}
+section,footer{scroll-margin-top:var(--header-h)}
 img{display:block;max-width:100%}
 a{text-decoration:none}
 button{font-family:'Outfit',sans-serif}
@@ -49,16 +96,39 @@ section{padding:7rem 10vw}
 /* ═══════════════════════════════════════
    NAV
 ═══════════════════════════════════════ */
+.top-fixed{position:fixed;top:0;left:0;right:0;z-index:200}
+
+/* ── Barra de anuncio: bandera de Puerto Rico ── */
+.announce-bar{
+  display:flex;align-items:center;justify-content:center;position:relative;
+  max-height:60px;overflow:hidden;opacity:1;
+  background:linear-gradient(90deg,rgba(10,10,8,.97),rgba(12,22,30,.97));
+  border-bottom:1px solid rgba(79,166,220,.35);
+  padding:.6rem 2.5rem;
+  transition:max-height .35s ease,opacity .3s ease,padding .35s ease,border-color .35s ease;
+}
+.announce-bar.hidden{max-height:0;padding-top:0;padding-bottom:0;opacity:0;border-bottom-color:transparent}
+.announce-inner{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;justify-content:center;text-align:center}
+.announce-flag{font-size:.95rem;line-height:1}
+.announce-text{font-size:.72rem;letter-spacing:.02em;color:var(--sand)}
+.announce-text strong{color:var(--pr-blue);font-weight:500}
+.announce-close{
+  position:absolute;right:.75rem;top:50%;transform:translateY(-50%);
+  background:none;border:none;color:var(--ash);font-size:1.1rem;line-height:1;
+  cursor:pointer;padding:.3rem .6rem;transition:color .3s;
+}
+.announce-close:hover{color:var(--pr-blue)}
+
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
   padding:1.25rem 3rem;
   display:flex;justify-content:space-between;align-items:center;
   background:rgba(10,10,8,.93);
   backdrop-filter:blur(14px);
   border-bottom:.5px solid var(--border);
-  transition:padding .4s;
+  border-top:1px solid transparent;
+  transition:padding .4s,border-top-color .4s;
 }
-nav.scrolled{padding:.9rem 3rem}
+nav.scrolled{padding:.9rem 3rem;border-top-color:rgba(79,166,220,.22)}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:300;letter-spacing:.2em;color:var(--bone);text-transform:uppercase;cursor:pointer}
 .nav-logo span{color:var(--gold)}
 .nav-links{display:flex;gap:2.25rem;list-style:none}
@@ -75,7 +145,7 @@ nav.scrolled{padding:.9rem 3rem}
 #hero{
   min-height:100vh;
   display:flex;flex-direction:column;justify-content:center;
-  padding-top:9rem;padding-bottom:6rem;
+  padding-top:calc(var(--header-h) + 3rem);padding-bottom:6rem;
   position:relative;overflow:hidden;
 }
 .hero-bg{
@@ -94,7 +164,15 @@ nav.scrolled{padding:.9rem 3rem}
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
   pointer-events:none;opacity:.6;
 }
-.hero-eyebrow{font-size:.62rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:2.25rem;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-eyebrow{font-size:.62rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-location-badge{
+  display:inline-flex;align-items:center;gap:.6rem;width:fit-content;
+  padding:.55rem 1.15rem;margin-bottom:1.75rem;
+  border:1px solid var(--pr-blue-dim);background:rgba(79,166,220,.06);
+  font-size:.7rem;letter-spacing:.03em;color:var(--sand);
+  opacity:0;animation:fadeUp .9s .3s forwards;
+}
+.hero-location-badge strong{color:var(--pr-blue);font-weight:500}
 .hero-title{
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(3.4rem,7vw,6.5rem);
@@ -177,6 +255,30 @@ nav.scrolled{padding:.9rem 3rem}
 }
 
 /* ═══════════════════════════════════════
+   MÉTODO FEP
+═══════════════════════════════════════ */
+#metodo{background:var(--noir2);position:relative;overflow:hidden}
+#metodo::before{
+  content:'';position:absolute;top:0;left:16vw;
+  width:.5px;height:100%;
+  background:linear-gradient(to bottom,transparent,rgba(201,169,110,.2),transparent);
+  pointer-events:none;
+}
+.metodo-header{max-width:680px;margin-bottom:4.5rem}
+.metodo-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.4rem);font-weight:300;color:var(--bone);line-height:1.16;margin-bottom:1.25rem}
+.metodo-title em{font-style:italic;color:var(--gold)}
+.metodo-sub{font-size:.9rem;color:var(--ash);line-height:1.88}
+.metodo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,196,168,.08)}
+.metodo-card{background:var(--noir2);padding:2.75rem 2.25rem;position:relative;transition:background .35s}
+.metodo-card:hover{background:rgba(201,169,110,.045)}
+.metodo-icon{font-size:1.7rem;color:var(--gold);margin-bottom:1.4rem;display:block;line-height:1}
+.metodo-num{position:absolute;top:2rem;right:2rem;font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:rgba(201,169,110,.14)}
+.metodo-name{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.85rem;max-width:80%}
+.metodo-desc{font-size:.86rem;color:var(--sand);line-height:1.75}
+.metodo-footnote{margin-top:3rem;font-size:.82rem;color:var(--ash);line-height:1.85;max-width:680px;border-left:2px solid var(--gold);padding-left:1.5rem}
+.metodo-footnote strong{color:var(--sand);font-weight:400}
+
+/* ═══════════════════════════════════════
    BIENES RAICES
 ═══════════════════════════════════════ */
 #realty{background:var(--warm-white);color:var(--noir)}
@@ -187,6 +289,8 @@ nav.scrolled{padding:.9rem 3rem}
 }
 .section-sub{font-size:.9rem;color:var(--ash);max-width:560px;line-height:1.85;margin-top:1rem}
 .props-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-bottom:4rem;margin-top:2.5rem}
+.prop-img.placeholder{background:linear-gradient(140deg,rgba(160,82,45,.16),rgba(139,69,19,.26));flex-direction:column;gap:.5rem}
+.photo-pending{position:absolute;bottom:1rem;left:1rem;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.75);background:rgba(10,10,8,.55);padding:.35rem .75rem;border:.5px solid rgba(255,255,255,.25)}
 .prop-card{
   background:#fff;border:.5px solid rgba(107,101,96,.14);
   overflow:hidden;transition:transform .3s,box-shadow .3s;
@@ -218,7 +322,7 @@ nav.scrolled{padding:.9rem 3rem}
   margin-bottom:.75rem;
 }
 .sold-sub{font-size:.84rem;color:var(--ash);margin-bottom:2rem;max-width:480px;line-height:1.8}
-.sold-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.sold-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
 .sold-card{padding:1.5rem;background:var(--noir);text-align:center}
 .sold-year{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.45rem}
 .sold-addr{font-size:.8rem;color:var(--sand);margin-bottom:.45rem}
@@ -253,6 +357,37 @@ nav.scrolled{padding:.9rem 3rem}
 .ba-before .ba-label{color:var(--ash)}
 .ba-after .ba-label{color:var(--terra)}
 .ba-placeholder{font-size:2.5rem;opacity:.18}
+
+/* ── Antes/Después — slider inmersivo ── */
+.ba-slider{position:relative;min-height:320px;overflow:hidden;background:rgba(107,101,96,.1);touch-action:pan-y}
+.ba-slider .ba-img-before,.ba-slider .ba-img-after{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;user-select:none;-webkit-user-drag:none}
+.ba-slider .ba-img-after{clip-path:inset(0 0 0 var(--ba-pos,50%))}
+.ba-slider .ba-img-before.img-missing,.ba-slider .ba-img-after.img-missing{
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(140deg,rgba(107,101,96,.16),rgba(107,101,96,.06));
+  color:rgba(212,196,168,.35);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:1rem;
+}
+.ba-img-after.img-missing{background:linear-gradient(140deg,rgba(160,82,45,.2),rgba(139,69,19,.12))}
+.ba-slide-label{position:absolute;top:1rem;z-index:3;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:.4rem .9rem;background:rgba(10,10,8,.55);backdrop-filter:blur(3px)}
+.ba-slide-label.before{left:1rem;color:var(--bone)}
+.ba-slide-label.after{right:1rem;color:var(--gold)}
+.ba-handle-line{position:absolute;top:0;bottom:0;left:var(--ba-pos,50%);width:2px;background:var(--gold);z-index:4;pointer-events:none;transform:translateX(-1px)}
+.ba-handle{
+  position:absolute;top:50%;left:var(--ba-pos,50%);z-index:5;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--gold);border:2px solid var(--noir);
+  transform:translate(-50%,-50%);
+  display:flex;align-items:center;justify-content:center;
+  cursor:ew-resize;font-size:.85rem;color:var(--noir);
+  box-shadow:0 4px 14px rgba(0,0,0,.35);
+}
+.ba-range{
+  position:absolute;inset:0;width:100%;height:100%;z-index:6;
+  margin:0;opacity:0;cursor:ew-resize;appearance:none;-webkit-appearance:none;background:transparent;
+}
+.ba-range::-webkit-slider-thumb{-webkit-appearance:none;width:42px;height:42px}
+.ba-range::-moz-range-thumb{width:42px;height:42px;opacity:0}
+.ba-hint{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);z-index:3;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.65);background:rgba(10,10,8,.5);padding:.4rem .9rem;pointer-events:none}
 .proj-info{padding:2.75rem;background:#fff}
 .proj-num{
   font-family:'Cormorant Garamond',serif;
@@ -528,6 +663,85 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:.5px solid rgba(212,196,168,.07)}
 .footer-copy{font-size:.7rem;color:rgba(107,101,96,.65);letter-spacing:.08em}
 .footer-tagline{font-family:'Cormorant Garamond',serif;font-size:.92rem;font-style:italic;color:rgba(201,169,110,.45)}
+.footer-location{font-size:.8rem;color:var(--ash);display:flex;align-items:center;gap:.5rem}
+.footer-location strong{color:var(--pr-blue);font-weight:500}
+
+/* ═══════════════════════════════════════
+   PORTALES — transiciones inmersivas
+═══════════════════════════════════════ */
+.portal-overlay{
+  position:fixed;inset:0;z-index:500;opacity:0;pointer-events:none;
+  transition:opacity .2s ease;cursor:pointer;
+}
+.portal-overlay.active{opacity:1;pointer-events:auto}
+.portal-scene{position:absolute;inset:0;overflow:hidden;background:var(--noir);display:none}
+.portal-overlay[data-mode="realty"] .portal-scene-realty{display:block}
+.portal-overlay[data-mode="finanzas"] .portal-scene-finanzas{display:block}
+
+.portal-caption{
+  position:absolute;bottom:14%;left:50%;transform:translateX(-50%);
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(1.1rem,2.4vw,1.5rem);color:var(--sand);
+  opacity:0;white-space:nowrap;z-index:3;pointer-events:none;
+}
+.portal-overlay.active .portal-caption{animation:portalCaption 1s ease forwards}
+@keyframes portalCaption{0%{opacity:0}20%{opacity:1}78%{opacity:1}100%{opacity:0}}
+.portal-hint{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.35);
+  z-index:3;pointer-events:none;
+}
+
+/* Bienes Raíces: puertas que se abren */
+.portal-door{
+  position:absolute;top:0;bottom:0;width:50%;will-change:transform;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.4), rgba(160,82,45,.28) 45%, rgba(201,169,110,.14) 75%, rgba(0,0,0,.55)),
+    repeating-linear-gradient(90deg, rgba(245,240,232,.045) 0 2px, transparent 2px 28px),
+    linear-gradient(160deg,#2b1c12,#120b07);
+  box-shadow:inset 0 0 70px rgba(0,0,0,.6);
+}
+.portal-door-left{left:0}
+.portal-door-right{right:0}
+.portal-overlay.active[data-mode="realty"] .portal-door-left{animation:doorOpenLeft 1s cubic-bezier(.76,0,.24,1) forwards}
+.portal-overlay.active[data-mode="realty"] .portal-door-right{animation:doorOpenRight 1s cubic-bezier(.76,0,.24,1) forwards}
+@keyframes doorOpenLeft{0%,32%{transform:translateX(0)}100%{transform:translateX(-102%)}}
+@keyframes doorOpenRight{0%,32%{transform:translateX(0)}100%{transform:translateX(102%)}}
+.portal-door-handle{
+  position:absolute;top:50%;width:8px;height:46px;border-radius:4px;
+  background:linear-gradient(180deg,var(--gold),#8a6d3b);transform:translateY(-50%);
+}
+.portal-door-left .portal-door-handle{right:8%}
+.portal-door-right .portal-door-handle{left:8%}
+.portal-glow{
+  position:absolute;top:0;bottom:0;left:50%;width:5px;transform:translateX(-50%);
+  background:linear-gradient(180deg,transparent,var(--pr-blue),var(--gold),transparent);
+  opacity:0;filter:blur(1.5px);z-index:2;
+}
+.portal-overlay.active[data-mode="realty"] .portal-glow{animation:portalGlowPulse 1s ease forwards}
+@keyframes portalGlowPulse{0%{opacity:0}22%{opacity:1}58%{opacity:.85}100%{opacity:0}}
+
+/* Contabilidad: el mundo de los números */
+.portal-scene-finanzas{background:#0A0A08}
+.portal-ledger{
+  position:absolute;inset:0;opacity:0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(201,169,110,.09) 0 1px, transparent 1px 46px),
+    repeating-linear-gradient(90deg, rgba(201,169,110,.05) 0 1px, transparent 1px 130px);
+}
+.portal-overlay.active[data-mode="finanzas"] .portal-ledger{animation:ledgerIn 1s ease forwards}
+@keyframes ledgerIn{0%{opacity:0;transform:scale(1.05)}30%{opacity:1;transform:scale(1)}82%{opacity:1}100%{opacity:0}}
+.portal-digits{position:absolute;inset:0;overflow:hidden;z-index:2}
+.portal-digit{
+  position:absolute;font-family:'Cormorant Garamond',serif;font-weight:300;
+  color:var(--gold);opacity:0;animation:portalDigitPop .8s ease forwards;
+}
+.portal-digit.blue{color:var(--pr-blue)}
+@keyframes portalDigitPop{0%{opacity:0;transform:translateY(16px) scale(.7)}42%{opacity:1;transform:translateY(0) scale(1)}82%{opacity:1}100%{opacity:0}}
+
+@media(prefers-reduced-motion:reduce){
+  .portal-door,.portal-glow,.portal-ledger,.portal-digit,.portal-caption{animation:none!important}
+}
 
 /* ═══════════════════════════════════════
    ANIMATIONS
@@ -544,7 +758,7 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
 ═══════════════════════════════════════ */
 @media(max-width:1024px){
   .brand-grid,.cs-grid,.leads-header,.agenda-grid,.about-grid,.footer-top{grid-template-columns:1fr;gap:2.5rem}
-  .divisions-grid,.props-grid{grid-template-columns:1fr 1fr}
+  .divisions-grid,.props-grid,.metodo-grid{grid-template-columns:1fr 1fr}
   .sold-grid{grid-template-columns:repeat(3,1fr)!important}
   .leads-form-wrap{grid-template-columns:1fr}
   .leads-sidebar{position:static;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
@@ -558,9 +772,11 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
   nav.scrolled{padding:.8rem 1.5rem}
   .nav-links,.nav-cta{display:none}
   .nav-mobile-toggle{display:flex}
+  .announce-bar{padding:.6rem 3rem;max-height:80px}
+  .announce-text{font-size:.66rem;line-height:1.5}
   section{padding:5rem 6vw}
   .hero-title{font-size:clamp(2.8rem,11vw,4rem)}
-  .divisions-grid,.props-grid{grid-template-columns:1fr}
+  .divisions-grid,.props-grid,.metodo-grid{grid-template-columns:1fr}
   .sold-grid{grid-template-columns:repeat(2,1fr)!important}
   .form-row,.form-row.three{grid-template-columns:1fr}
   .type-selector{flex-direction:column;width:100%}
@@ -573,7 +789,10 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
   .leads-sidebar{grid-template-columns:1fr}
   .check-group{grid-template-columns:1fr}
   .ba-grid{grid-template-columns:1fr 1fr;min-height:160px}
+  .ba-slider{min-height:230px}
   .proj-stats{gap:1.5rem}
+  /* Evita el zoom automático de iOS al enfocar campos (mínimo 16px) */
+  .field input,.field select,.field textarea,.agenda-field input,.agenda-field select,.cs-input{font-size:16px}
 }
 @media(max-width:480px){
   section{padding:4rem 5vw}
@@ -597,31 +816,61 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
 </head>
 <body>
 
+<!-- PORTAL OVERLAY: transiciones inmersivas de entrada a Bienes Raíces y Finanzas -->
+<div class="portal-overlay" id="portalOverlay" aria-hidden="true">
+  <div class="portal-scene portal-scene-realty">
+    <div class="portal-door portal-door-left"><div class="portal-door-handle"></div></div>
+    <div class="portal-door portal-door-right"><div class="portal-door-handle"></div></div>
+    <div class="portal-glow"></div>
+    <p class="portal-caption">Cruzando el umbral…</p>
+    <span class="portal-hint">Toca para saltar</span>
+  </div>
+  <div class="portal-scene portal-scene-finanzas">
+    <div class="portal-ledger"></div>
+    <div class="portal-digits" id="portalDigits"></div>
+    <p class="portal-caption">Entrando al mundo de los números…</p>
+    <span class="portal-hint">Toca para saltar</span>
+  </div>
+</div>
+
 <!-- MOBILE NAV DRAWER -->
 <div class="mobile-nav" id="mobileNav">
   <a href="#brand" onclick="closeMobileNav()">La Marca</a>
-  <a href="#realty" onclick="closeMobileNav()">Bienes Raíces</a>
+  <a href="#metodo" onclick="closeMobileNav()">Nuestro Método</a>
+  <a href="#realty" data-portal="realty" data-target="realty">Bienes Raíces</a>
   <a href="#contacto" onclick="closeMobileNav()">Propiedades</a>
-  <a href="#contabilidad" onclick="closeMobileNav()">Finanzas</a>
+  <a href="#contabilidad" data-portal="finanzas" data-target="contabilidad">Finanzas</a>
   <a href="#about" onclick="closeMobileNav()">Rafael</a>
   <button class="mobile-cta" onclick="closeMobileNav();document.getElementById('agenda').scrollIntoView({behavior:'smooth'})">Agenda 1:1</button>
 </div>
 
-<!-- ═══════════ NAV ═══════════ -->
-<nav id="mainNav">
-  <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">Firme en <span>Propósito</span></div>
-  <ul class="nav-links">
-    <li><a href="#brand">La Marca</a></li>
-    <li><a href="#realty">Bienes Raíces</a></li>
-    <li><a href="#contacto">Propiedades</a></li>
-    <li><a href="#contabilidad">Finanzas</a></li>
-    <li><a href="#about">Rafael</a></li>
-  </ul>
-  <button class="nav-cta" onclick="document.getElementById('agenda').scrollIntoView({behavior:'smooth'})">Agenda 1:1</button>
-  <button class="nav-mobile-toggle" id="mobileToggle" onclick="toggleMobileNav()" aria-label="Abrir menú">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+<div class="top-fixed" id="topFixed">
+  <!-- ═══════════ ANUNCIO ═══════════ -->
+  <div class="announce-bar" id="announceBar">
+    <div class="announce-inner">
+      <span class="announce-flag" aria-hidden="true">🇵🇷</span>
+      <span class="announce-text">Muy pronto: nuestra primera <strong>localidad física en Guayama, Puerto Rico</strong>.</span>
+    </div>
+    <button class="announce-close" onclick="closeAnnounce()" aria-label="Cerrar aviso">×</button>
+  </div>
+
+  <!-- ═══════════ NAV ═══════════ -->
+  <nav id="mainNav">
+    <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">Firme en <span>Propósito</span></div>
+    <ul class="nav-links">
+      <li><a href="#brand">La Marca</a></li>
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="#realty" data-portal="realty" data-target="realty">Bienes Raíces</a></li>
+      <li><a href="#contacto">Propiedades</a></li>
+      <li><a href="#contabilidad" data-portal="finanzas" data-target="contabilidad">Finanzas</a></li>
+      <li><a href="#about">Rafael</a></li>
+    </ul>
+    <button class="nav-cta" onclick="document.getElementById('agenda').scrollIntoView({behavior:'smooth'})">Agenda 1:1</button>
+    <button class="nav-mobile-toggle" id="mobileToggle" onclick="toggleMobileNav()" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</div>
 
 <!-- ═══════════ HERO ═══════════ -->
 <section id="hero">
@@ -629,10 +878,11 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
   <div class="hero-vline"></div>
   <div class="hero-grain"></div>
   <p class="hero-eyebrow">Puerto Rico · Bienes Raíces · Rehab · Visión · Propósito</p>
+  <div class="hero-location-badge"><span aria-hidden="true">🇵🇷</span> Muy pronto: <strong>localidad física en Guayama, Puerto Rico</strong></div>
   <h1 class="hero-title">Construido con<br><em>intención.</em><br>Creciendo con<br>propósito.</h1>
   <p class="hero-sub">FIRME EN PROPÓSITO es más que una empresa de bienes raíces. Es una plataforma de crecimiento, transformación y visión construida desde Puerto Rico para durar.</p>
   <div class="hero-actions">
-    <button class="btn-primary" onclick="document.getElementById('realty').scrollIntoView({behavior:'smooth'})">Ver Propiedades</button>
+    <button class="btn-primary" data-portal="realty" data-target="realty">Ver Propiedades</button>
     <button class="btn-ghost" onclick="document.getElementById('agenda').scrollIntoView({behavior:'smooth'})">Agenda una Llamada</button>
     <button class="btn-ghost" onclick="document.getElementById('brand').scrollIntoView({behavior:'smooth'})">Conocer la Marca</button>
   </div>
@@ -672,13 +922,13 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
     <div class="division-main-title">Tres pilares.<br>Una sola visión.</div>
   </div>
   <div class="divisions-grid">
-    <div class="division-card reveal" onclick="document.getElementById('realty').scrollIntoView({behavior:'smooth'})">
+    <div class="division-card reveal" data-portal="realty" data-target="realty" role="button" tabindex="0">
       <span class="div-num">01</span>
       <div class="div-tag">FEP División</div>
       <div class="div-title">Bienes Raíces<br></div>
       <p class="div-desc">Compra, venta y rehabilitación de propiedades en Puerto Rico. FEP Realty y FEP Rehab trabajan juntos para encontrar valor donde otros no lo ven.</p>
     </div>
-    <div class="division-card reveal" style="animation-delay:.1s" onclick="document.getElementById('contabilidad').scrollIntoView({behavior:'smooth'})">
+    <div class="division-card reveal" style="animation-delay:.1s" data-portal="finanzas" data-target="contabilidad" role="button" tabindex="0">
       <span class="div-num">02</span>
       <div class="div-tag">FEP División</div>
       <div class="div-title">Contabilidad<br>& Finanzas</div>
@@ -694,22 +944,70 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
   </div>
 </section>
 
+<!-- ═══════════ MÉTODO FEP ═══════════ -->
+<section id="metodo">
+  <div class="metodo-header reveal">
+    <span class="label">Nuestro Método</span>
+    <h2 class="metodo-title">No compramos por corazonada.<br>Evaluamos con <em>rigor.</em></h2>
+    <p class="metodo-sub">Cada terreno, casa o finca que FEP analiza pasa por el mismo método antes de tomar una decisión. Seis dimensiones. Sin atajos. Así evaluamos toda oportunidad de bienes raíces en Puerto Rico — desde un solar en Guayama hasta un proyecto de rehabilitación completo.</p>
+  </div>
+  <div class="metodo-grid">
+    <div class="metodo-card reveal">
+      <span class="metodo-num">01</span>
+      <span class="metodo-icon">⚖️</span>
+      <div class="metodo-name">Viabilidad Legal</div>
+      <p class="metodo-desc">Zonificación, permisos y potencial de desarrollo. Si los títulos o el uso de suelo no cuadran, no seguimos.</p>
+    </div>
+    <div class="metodo-card reveal" style="animation-delay:.05s">
+      <span class="metodo-num">02</span>
+      <span class="metodo-icon">📈</span>
+      <div class="metodo-name">Viabilidad Económica</div>
+      <p class="metodo-desc">ROI, flujo de efectivo y apreciación real. Los números tienen que sostenerse solos, sin ilusiones.</p>
+    </div>
+    <div class="metodo-card reveal" style="animation-delay:.1s">
+      <span class="metodo-num">03</span>
+      <span class="metodo-icon">🏗️</span>
+      <div class="metodo-name">Viabilidad Física</div>
+      <p class="metodo-desc">Estructura, diseño y funcionalidad. Evaluamos qué tan sólido está lo que hay y qué tan lejos puede llegar.</p>
+    </div>
+    <div class="metodo-card reveal" style="animation-delay:.15s">
+      <span class="metodo-num">04</span>
+      <span class="metodo-icon">🤝</span>
+      <div class="metodo-name">Valor Psicosocial y Cultural</div>
+      <p class="metodo-desc">El impacto en la comunidad importa. Buscamos oportunidades que dejen algo positivo en Puerto Rico, no solo en el bolsillo.</p>
+    </div>
+    <div class="metodo-card reveal" style="animation-delay:.2s">
+      <span class="metodo-num">05</span>
+      <span class="metodo-icon">📖</span>
+      <div class="metodo-name">Historia y Potencial Narrativo</div>
+      <p class="metodo-desc">Toda propiedad tiene una identidad y un carácter. Escuchamos esa historia antes de decidir qué hacer con ella.</p>
+    </div>
+    <div class="metodo-card reveal" style="animation-delay:.25s">
+      <span class="metodo-num">06</span>
+      <span class="metodo-icon">✟</span>
+      <div class="metodo-name">Intuición / Alineación Espiritual</div>
+      <p class="metodo-desc">Propósito y conexión emocional con el proyecto. Si no sentimos que es correcto, no importa cuán bueno se vea en papel.</p>
+    </div>
+  </div>
+  <p class="metodo-footnote reveal">Estas seis dimensiones son el filtro detrás de <strong>cada propiedad en venta</strong>, <strong>cada cierre</strong> y <strong>cada proyecto de FEP Rehab</strong> que vas a ver a continuación. No es teoría — es cómo decidimos.</p>
+</section>
+
 <!-- ═══════════ BIENES RAICES ═══════════ -->
 <section id="realty">
   <div class="reveal">
     <span class="label">FEP Bienes Raíces</span>
-    <h2 class="section-title">Propiedades que mueven.<br>Resultados que hablan.</h2>
-    <p class="section-sub">No solo vendemos propiedades. Las entendemos, las analizamos y las posicionamos con estrategia. Cada transacción es una historia de confianza y ejecución.</p>
+    <h2 class="section-title">Terrenos en Puerto Rico.<br>Resultados que hablan.</h2>
+    <p class="section-sub">No solo vendemos propiedades. Las entendemos, las analizamos con nuestro método y las posicionamos con estrategia — terrenos, fincas y propiedades comerciales y residenciales en Guayama y toda la isla. Cada transacción es una historia de confianza y ejecución.</p>
   </div>
 
   <!-- FEP REALTY -->
   <div style="margin-top:3.5rem" class="reveal">
     <span class="label">FEP Realty — Propiedades en Venta</span>
-    <div class="props-grid" style="grid-template-columns:repeat(2,1fr)">
+    <div class="props-grid">
       <div class="prop-card">
         <div class="prop-img" style="padding:0">
   <span class="prop-status">En Venta</span>
-  <img src="guayama-terreno.jpg" alt="Terreno en Carite, Guayama" style="width:100%;height:100%;object-fit:cover">
+  <img src="guayama-terreno.jpg" alt="Terreno en Carite, Guayama, Puerto Rico — 1.96 cuerdas" style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async" width="800" height="600">
 </div>
         <div class="prop-body">
           <div class="prop-location">Guayama, Puerto Rico</div>
@@ -726,7 +1024,7 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
       <div class="prop-card">
         <div class="prop-img" style="padding:0">
   <span class="prop-status">En Venta</span>
-  <img src="ponce-terreno.jpg" alt="Terreno Comercial, Ponce" style="width:100%;height:100%;object-fit:cover">
+  <img src="ponce-terreno.jpg" alt="Terreno Comercial PR-14, Ponce, Puerto Rico — 9.46 cuerdas" style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async" width="800" height="600">
 </div>
         <div class="prop-body">
           <div class="prop-location">Ponce, Puerto Rico</div>
@@ -739,6 +1037,24 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
           </div>
         </div>
       </div>
+      <div class="prop-card">
+        <!-- TODO FEP: reemplazar este bloque placeholder con foto real de la finca (cayey-finca.jpg) -->
+        <div class="prop-img placeholder">
+          <span class="prop-status">En Venta</span>
+          <span class="prop-icon">⛰</span>
+          <span class="photo-pending">Foto próximamente</span>
+        </div>
+        <div class="prop-body">
+          <div class="prop-location">Cayey, Puerto Rico</div>
+          <div class="prop-name">Finca en Cayey</div>
+          <div class="prop-price">$150,000</div>
+          <div class="prop-details" style="flex-wrap:wrap;gap:.65rem">
+            <span>6 cuerdas</span>
+            <span>Uso agrícola / recreativo</span>
+            <span>Ideal para finca, casa de campo o retiro</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -747,7 +1063,7 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
     <div class="divider-line"></div>
     <div class="sold-title">Historial de Cierres</div>
     <p class="sold-sub">Cada cierre es una historia de confianza. Esta es la trayectoria que construimos juntos.</p>
-    <div class="sold-grid" style="grid-template-columns:repeat(5,1fr)">
+    <div class="sold-grid">
       <div class="sold-card"><div class="sold-year">2026</div><div class="sold-addr">Guayama, PR</div><div class="sold-price">$45K</div></div>
       <div class="sold-card"><div class="sold-year">2025</div><div class="sold-addr">Guayama, PR</div><div class="sold-price">$106K</div></div>
       <div class="sold-card"><div class="sold-year">2025</div><div class="sold-addr">Guayama, PR</div><div class="sold-price">$72K</div></div>
@@ -764,28 +1080,29 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
     <span class="label">FEP Rehab — bajo FEP Bienes Raíces</span>
     <div class="rehab-intro">
       <h2 class="section-title" style="color:var(--noir)">Rescatamos lo que<br>otros abandonaron.</h2>
-      <p class="section-sub" style="color:var(--ash)">FEP Rehab no hace flips. Devuelve propiedades a la vida con intención, trabajo y visión. Cada proyecto tiene una historia, y esa historia merece ser contada.</p>
+      <p class="section-sub" style="color:var(--ash)">FEP Rehab no hace flips. Es rehabilitación de propiedades abandonadas en Puerto Rico con intención, trabajo y visión — evaluada con nuestro método de seis dimensiones antes de tocar un solo clavo. Cada proyecto tiene una historia, y esa historia merece ser contada.</p>
     </div>
 
     <div class="project reveal">
-      <div class="ba-grid">
-       <div class="ba-panel ba-before" style="padding:0;position:relative">
-  <span class="ba-label" style="position:absolute;top:1rem;left:1rem;z-index:2">Antes</span>
-  <img src="images/proyecto001-antes.jpg" alt="Antes" style="width:100%;height:100%;object-fit:cover">
-</div>
-<div class="ba-panel ba-after" style="padding:0;position:relative">
-  <span class="ba-label" style="position:absolute;top:1rem;left:1rem;z-index:2">Después</span>
-  <img src="images/proyecto001-despues.jpg" alt="Después" style="width:100%;height:100%;object-fit:cover">
-</div>
+      <!-- TODO FEP: reemplazar con fotos reales — /images/proyecto001-antes.jpg y /images/proyecto001-despues.jpg (recomendado: mismo ángulo de cámara en ambas). Si el archivo no existe, se muestra un placeholder automáticamente. -->
+      <div class="ba-slider" id="baSlider001">
+        <span class="ba-slide-label before">Antes</span>
+        <span class="ba-slide-label after">Después</span>
+        <img class="ba-img-before" src="images/proyecto001-antes.jpg" alt="Antes de la rehabilitación — La Casa del Barrio en Progreso, Guayama" loading="lazy" decoding="async" onerror="baImgFallback(this,'Foto “antes” pendiente')">
+        <img class="ba-img-after" src="images/proyecto001-despues.jpg" alt="Después de la rehabilitación — La Casa del Barrio en Progreso, Guayama" loading="lazy" decoding="async" onerror="baImgFallback(this,'Foto “después” pendiente')">
+        <div class="ba-handle-line"></div>
+        <div class="ba-handle">↔</div>
+        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Deslizar para comparar antes y después" oninput="setBaPos('baSlider001',this.value)">
+        <span class="ba-hint">Desliza para comparar</span>
       </div>
       <div class="proj-info">
         <div class="proj-num">001</div>
         <div class="proj-loc">Proyecto 001 · Guayama, Puerto Rico</div>
         <div class="proj-title">La Casa del Barrio en Progreso</div>
-        <p class="proj-desc">Una propiedad olvidada, invisibilizada por el tiempo. La vimos donde otros no vieron nada. Con trabajo real, disciplina y propósito, la devolvimos a la vida en 300 días. Hoy es prueba de que rehabilitar con intención transforma más que paredes.</p>
+        <p class="proj-desc">Una propiedad olvidada, invisibilizada por el tiempo. La vimos donde otros no vieron nada. No tuvimos un socio inversionista, como suele hacerse en estos proyectos — por eso tomó más tiempo del planificado. Estábamos comenzando, tomamos decisiones sobre la marcha y tuvimos gastos imprevistos en el camino. Aun así, le añadimos el valor necesario y seguimos adelante hasta el final. Hoy es prueba de que rehabilitar con intención transforma más que paredes.</p>
         <div class="proj-stats">
-          <div><div class="stat-val">300</div><div class="stat-label">Días</div></div>
-          <div><div class="stat-val">78%</div><div class="stat-label">Valor añadido</div></div>
+          <div><div class="stat-val">466</div><div class="stat-label">Días</div></div>
+          <div><div class="stat-val">81%</div><div class="stat-label">Valor añadido</div></div>
           <div><div class="stat-val">2026</div><div class="stat-label">Completado</div></div>
         </div>
       </div>
@@ -824,10 +1141,10 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
   </div>
 
   <div class="type-selector reveal" role="tablist">
-    <button class="type-btn active" data-type="vender"    onclick="switchType('vender')">Quiero Vender</button>
-    <button class="type-btn"        data-type="comprar"   onclick="switchType('comprar')">Quiero Comprar</button>
-    <button class="type-btn"        data-type="abandonada" onclick="switchType('abandonada')">Propiedad Abandonada</button>
-    <button class="type-btn"        data-type="otro"      onclick="switchType('otro')">Otra Consulta</button>
+    <button class="type-btn active" data-type="vender"    role="tab" aria-selected="true"  onclick="switchType('vender')">Quiero Vender</button>
+    <button class="type-btn"        data-type="comprar"   role="tab" aria-selected="false" onclick="switchType('comprar')">Quiero Comprar</button>
+    <button class="type-btn"        data-type="abandonada" role="tab" aria-selected="false" onclick="switchType('abandonada')">Propiedad Abandonada</button>
+    <button class="type-btn"        data-type="otro"      role="tab" aria-selected="false" onclick="switchType('otro')">Otra Consulta</button>
   </div>
 
   <div class="leads-form-wrap reveal">
@@ -839,19 +1156,19 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
         <div class="form-row">
           <div class="field" id="fw-nombre">
             <label>Nombre completo <span class="req">*</span></label>
-            <input type="text" name="nombre" id="fNombre" placeholder="Tu nombre completo">
+            <input type="text" name="nombre" id="fNombre" placeholder="Tu nombre completo" autocomplete="name" required>
             <span class="field-error-msg">Este campo es requerido.</span>
           </div>
           <div class="field" id="fw-tel">
             <label>Teléfono <span class="req">*</span></label>
-            <input type="tel" name="telefono" id="fTel" placeholder="(787) 000-0000">
+            <input type="tel" name="telefono" id="fTel" placeholder="(787) 000-0000" autocomplete="tel" inputmode="tel" required>
             <span class="field-error-msg">Ingresa un teléfono válido.</span>
           </div>
         </div>
         <div class="form-row">
           <div class="field" id="fw-email">
             <label>Correo electrónico <span class="req">*</span></label>
-            <input type="email" name="email" id="fEmail" placeholder="tu@correo.com">
+            <input type="email" name="email" id="fEmail" placeholder="tu@correo.com" autocomplete="email" inputmode="email" required>
             <span class="field-error-msg">Ingresa un correo válido.</span>
           </div>
           <div class="field">
@@ -1074,6 +1391,7 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
 <!-- ═══════════ ABOUT ═══════════ -->
 <section id="about">
   <div class="about-grid reveal">
+    <!-- TODO FEP: reemplazar este bloque de iniciales con una foto real de Rafael (background-image o <img>, aspect-ratio 3/4) -->
     <div class="about-portrait">
       <div class="portrait-initials">RV</div>
       <div class="portrait-tag">
@@ -1171,9 +1489,9 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
     <div class="footer-col">
       <h4>FEP Bienes Raíces</h4>
       <ul>
-        <li><a href="#realty">FEP Realty</a></li>
-        <li><a href="#realty">Propiedades Vendidas</a></li>
-        <li><a href="#realty">FEP Rehab</a></li>
+        <li><a href="#realty" data-portal="realty" data-target="realty">FEP Realty</a></li>
+        <li><a href="#realty" data-portal="realty" data-target="realty">Propiedades Vendidas</a></li>
+        <li><a href="#realty" data-portal="realty" data-target="realty">FEP Rehab</a></li>
         <li><a href="#contacto">Enviar Propiedad</a></li>
       </ul>
     </div>
@@ -1181,9 +1499,10 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
       <h4>La Marca</h4>
       <ul>
         <li><a href="#brand">Nuestra Visión</a></li>
+        <li><a href="#metodo">Nuestro Método</a></li>
         <li><a href="#about">Rafael Valentín</a></li>
         <li><a href="#vision">El Futuro</a></li>
-        <li><a href="#contabilidad">FEP Finanzas</a></li>
+        <li><a href="#contabilidad" data-portal="finanzas" data-target="contabilidad">FEP Finanzas</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1191,9 +1510,11 @@ footer{background:var(--noir);padding:5.5rem 10vw 3rem;border-top:.5px solid rgb
       <ul>
         <li><a href="#agenda">Agenda 1:1</a></li>
         <li><a href="#contacto">Enviar Consulta</a></li>
+        <!-- TODO FEP: reemplazar los "#" con los enlaces reales de Instagram, LinkedIn y WhatsApp -->
         <li><a href="#">Instagram</a></li>
         <li><a href="#">LinkedIn</a></li>
         <li><a href="#">WhatsApp</a></li>
+        <li class="footer-location"><span aria-hidden="true">🇵🇷</span> Guayama, PR — Localidad física: <strong>próximamente</strong></li>
       </ul>
     </div>
   </div>
@@ -1212,6 +1533,27 @@ window.addEventListener('scroll',()=>{
   document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>60);
 });
 
+/* HEADER HEIGHT SYNC — mantiene el hero y el scroll-margin alineados con el alto real del header (nav + barra de anuncio) */
+function syncHeaderHeight(){
+  const el=document.getElementById('topFixed');
+  if(el)document.documentElement.style.setProperty('--header-h',el.offsetHeight+'px');
+}
+window.addEventListener('load',syncHeaderHeight);
+window.addEventListener('resize',syncHeaderHeight);
+
+/* ANUNCIO — bandera de Puerto Rico / localidad en Guayama */
+function closeAnnounce(){
+  document.getElementById('announceBar').classList.add('hidden');
+  try{localStorage.setItem('fepAnnounceClosed','1');}catch(e){}
+  setTimeout(syncHeaderHeight,380);
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  let dismissed=false;
+  try{dismissed=localStorage.getItem('fepAnnounceClosed')==='1';}catch(e){}
+  if(dismissed)document.getElementById('announceBar').classList.add('hidden');
+  syncHeaderHeight();
+});
+
 /* MOBILE NAV */
 function toggleMobileNav(){
   document.getElementById('mobileNav').classList.toggle('open');
@@ -1226,14 +1568,35 @@ const observer=new IntersectionObserver((entries)=>{
 },{threshold:.1,rootMargin:'0px 0px -60px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
+/* BEFORE/AFTER SLIDER */
+function setBaPos(id,val){
+  const el=document.getElementById(id);
+  if(el)el.style.setProperty('--ba-pos',val+'%');
+}
+function baImgFallback(img,text){
+  const div=document.createElement('div');
+  div.className=img.className+' img-missing';
+  div.textContent=text;
+  img.replaceWith(div);
+}
+
 /* TYPE SWITCHER */
 function switchType(type){
   document.querySelectorAll('.type-btn').forEach(b=>{
-    b.classList.toggle('active',b.dataset.type===type);
+    const active=b.dataset.type===type;
+    b.classList.toggle('active',active);
+    b.setAttribute('aria-selected',active?'true':'false');
   });
-  document.querySelectorAll('.conditional-panel').forEach(p=>p.classList.remove('visible'));
-  const t=document.getElementById('panel-'+type);
-  if(t){t.classList.add('visible');}
+  document.querySelectorAll('.conditional-panel').forEach(p=>{
+    const isTarget=p.id==='panel-'+type;
+    p.classList.toggle('visible',isTarget);
+    if(!isTarget){
+      /* limpia los campos de paneles ocultos para no enviar datos obsoletos de otro flujo */
+      p.querySelectorAll('input,select,textarea').forEach(f=>{
+        if(f.type==='checkbox')f.checked=false;else f.value='';
+      });
+    }
+  });
   document.getElementById('tipoConsulta').value=type;
 }
 
@@ -1322,12 +1685,97 @@ function handleCsEmail(){
   btn.disabled=true;
 }
 
-/* SMOOTH ANCHOR SCROLL for footer/nav links */
+/* SMOOTH ANCHOR SCROLL for footer/nav links (los que tienen data-portal se manejan aparte, más abajo) */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  if(a.dataset.portal)return;
   a.addEventListener('click',function(e){
     e.preventDefault();
     const target=document.querySelector(this.getAttribute('href'));
     if(target)target.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+/* ═══════════════════════════════════════
+   PORTALES — transición inmersiva al entrar a
+   Bienes Raíces ("cruzar el umbral") y
+   Finanzas ("el mundo de los números")
+═══════════════════════════════════════ */
+let portalTimers=[];
+let currentPortalTarget=null;
+function prefersReducedMotion(){
+  return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+function clearPortalTimers(){
+  portalTimers.forEach(clearTimeout);
+  portalTimers=[];
+}
+function spawnPortalDigits(){
+  const el=document.getElementById('portalDigits');
+  if(!el)return;
+  el.innerHTML='';
+  const chars=['0','1','2','3','4','5','6','7','8','9','$','%'];
+  const frag=document.createDocumentFragment();
+  for(let i=0;i<20;i++){
+    const s=document.createElement('span');
+    s.className='portal-digit'+(Math.random()<0.25?' blue':'');
+    s.textContent=chars[Math.floor(Math.random()*chars.length)];
+    s.style.left=(Math.random()*92)+'%';
+    s.style.top=(Math.random()*86)+'%';
+    s.style.fontSize=(1.1+Math.random()*2.3)+'rem';
+    s.style.animationDelay=(Math.random()*.5)+'s';
+    frag.appendChild(s);
+  }
+  el.appendChild(frag);
+}
+function endPortal(overlay){
+  overlay.classList.remove('active');
+}
+/* Salto instantáneo real: html{scroll-behavior:smooth} haría que scrollIntoView({behavior:'auto'})
+   igual anime, así que se desactiva el smooth-scroll un instante para el salto detrás de las puertas. */
+function jumpTo(target){
+  const prev=document.documentElement.style.scrollBehavior;
+  document.documentElement.style.scrollBehavior='auto';
+  target.scrollIntoView({block:'start'});
+  document.documentElement.style.scrollBehavior=prev;
+}
+function runPortal(mode,targetId){
+  const target=document.getElementById(targetId);
+  if(!target)return;
+  if(prefersReducedMotion()){
+    target.scrollIntoView({behavior:'smooth'});
+    return;
+  }
+  const overlay=document.getElementById('portalOverlay');
+  clearPortalTimers();
+  currentPortalTarget=target;
+  overlay.dataset.mode=mode;
+  overlay.classList.remove('active');
+  void overlay.offsetWidth; /* fuerza reflow para poder re-disparar las animaciones */
+  if(mode==='finanzas')spawnPortalDigits();
+  overlay.classList.add('active');
+  const jumpDelay=mode==='realty'?520:480;
+  const totalDuration=mode==='realty'?1050:1000;
+  portalTimers.push(setTimeout(()=>jumpTo(target),jumpDelay));
+  portalTimers.push(setTimeout(()=>endPortal(overlay),totalDuration));
+}
+/* Click en el overlay = saltar la animación e ir directo a la sección */
+document.getElementById('portalOverlay').addEventListener('click',function(){
+  clearPortalTimers();
+  if(currentPortalTarget)jumpTo(currentPortalTarget);
+  endPortal(this);
+});
+document.querySelectorAll('[data-portal]').forEach(el=>{
+  el.addEventListener('click',function(e){
+    e.preventDefault();
+    closeMobileNav();
+    runPortal(this.dataset.portal,this.dataset.target);
+  });
+  el.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){
+      e.preventDefault();
+      closeMobileNav();
+      runPortal(this.dataset.portal,this.dataset.target);
+    }
   });
 });
 </script>
