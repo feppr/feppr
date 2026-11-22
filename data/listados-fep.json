@@ -1,0 +1,29 @@
+{
+  "_nota": "Listados exclusivos FEP. Edita este archivo para añadir, cambiar o quitar propiedades. 'mlsId' es opcional: el número del listado en Stellar MLS.",
+  "listados": [
+    {
+      "slug": "terreno-carite-guayama",
+      "mlsId": "",
+      "estado": "En Venta",
+      "pueblo": "Guayama",
+      "nombre": "Terreno en Carite",
+      "precio": 64000,
+      "foto": "/guayama-terreno.jpg",
+      "datos": ["1.96 cuerdas", "Contador de agua", "Suelo Rústico Común"],
+      "historia": "En las montañas de Carite, donde el aire es más fresco y el ritmo es otro. Casi dos cuerdas para construir una casa de campo, un refugio de alquiler a corto plazo o simplemente un lugar para reconectar con la naturaleza.",
+      "potencial": ["Casa de campo o segunda residencia", "Alquiler a corto plazo (AirBnb) y ecoturismo", "Contador de agua ya instalado"]
+    },
+    {
+      "slug": "terreno-comercial-pr14-ponce",
+      "mlsId": "",
+      "estado": "En Venta",
+      "pueblo": "Ponce",
+      "nombre": "Terreno Comercial — PR-14",
+      "precio": 1200000,
+      "foto": "/ponce-terreno.jpg",
+      "datos": ["9.46 cuerdas", "Suelo Urbano", "Ubicado en la PR-14"],
+      "historia": "Casi diez cuerdas de suelo urbano sobre la PR-14 en Ponce. Una pieza de escala para un desarrollo que traiga comercio, vivienda y empleos a la Ciudad Señorial.",
+      "potencial": ["Desarrollo comercial", "Residencial o uso mixto", "Escala para un proyecto ancla en la zona"]
+    }
+  ]
+}

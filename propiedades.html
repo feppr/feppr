@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Propiedades en Puerto Rico — Listados exclusivos FEP y búsqueda del MLS. Firme en Propósito, Rafael Valentín Bermúdez.">
+<title>Propiedades — Firme en Propósito</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --noir:#0A0A08;--bone:#F5F0E8;--terra:#A0522D;--sand:#D4C4A8;--ash:#6B6560;
+  --warm-white:#FAF8F4;--warm-mid:#F0EAE0;--gold:#C9A96E;
+  --border:rgba(212,196,168,0.15);--border-mid:rgba(212,196,168,0.28);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--noir);color:var(--bone);font-family:'Outfit',sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font-family:'Outfit',sans-serif}
+.serif{font-family:'Cormorant Garamond',serif}
+.label{font-size:.65rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.25rem}
+.btn-primary{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:1rem 2.25rem;background:var(--gold);color:var(--noir);border:none;cursor:pointer;transition:background .3s;font-weight:500}
+.btn-primary:hover{background:var(--bone)}
+.btn-primary:disabled{opacity:.6;cursor:default}
+.btn-ghost{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:1rem 2.25rem;background:transparent;color:var(--noir);border:.5px solid rgba(10,10,8,.3);cursor:pointer;transition:all .3s}
+.btn-ghost:hover{border-color:var(--terra);color:var(--terra)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,8,.93);backdrop-filter:blur(14px);border-bottom:.5px solid var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:300;letter-spacing:.2em;color:var(--bone);text-transform:uppercase}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.25rem;list-style:none}
+.nav-links a{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.5rem;border:.5px solid var(--gold);color:var(--gold);transition:all .3s}
+.nav-cta:hover{background:var(--gold);color:var(--noir)}
+.nav-mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.nav-mobile-toggle span{display:block;width:22px;height:.5px;background:var(--sand)}
+.mobile-nav{position:fixed;inset:0;z-index:190;background:rgba(10,10,8,.98);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;transform:translateY(-100%);transition:transform .4s ease}
+.mobile-nav.open{transform:translateY(0)}
+.mobile-nav a{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--bone);letter-spacing:.08em}
+
+/* HERO */
+.p-hero{padding:10rem 10vw 4.5rem;border-bottom:.5px solid var(--border)}
+.p-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5.5vw,4.6rem);font-weight:300;line-height:1.08;max-width:900px}
+.p-hero h1 em{color:var(--gold);font-style:italic}
+.p-hero p{font-size:.92rem;color:var(--sand);opacity:.8;max-width:560px;line-height:1.85;margin-top:1.5rem}
+.tabs{display:flex;gap:0;margin-top:3rem;border:.5px solid var(--border-mid);width:max-content;max-width:100%}
+.tab{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;padding:.95rem 1.75rem;background:transparent;color:var(--sand);border:none;cursor:pointer;transition:all .3s}
+.tab.active{background:var(--gold);color:var(--noir);font-weight:500}
+
+/* EXCLUSIVOS */
+#exclusivos{background:var(--warm-white);color:var(--noir);padding:6rem 10vw}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.15}
+.sec-sub{font-size:.9rem;color:var(--ash);max-width:560px;line-height:1.85;margin-top:1rem}
+.excl-list{display:flex;flex-direction:column;gap:3.5rem;margin-top:4rem}
+.excl{display:grid;grid-template-columns:1.25fr 1fr;background:#fff;border:.5px solid rgba(107,101,96,.14);overflow:hidden}
+.excl:nth-child(even){grid-template-columns:1fr 1.25fr}
+.excl:nth-child(even) .excl-media{order:2}
+.excl-media{position:relative;min-height:420px;background:linear-gradient(140deg,rgba(160,82,45,.12),rgba(139,69,19,.22))}
+.excl-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;top:1.25rem;left:1.25rem;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:.4rem 1rem;background:var(--terra);color:#fff;z-index:2}
+.badge.fep{left:auto;right:1.25rem;background:var(--noir);color:var(--gold);border:.5px solid var(--gold)}
+.excl-body{padding:3.25rem;display:flex;flex-direction:column;justify-content:center}
+.excl-loc{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:.75rem}
+.excl-name{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;line-height:1.15;margin-bottom:.75rem}
+.excl-price{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--terra);margin-bottom:1.25rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.chip{font-size:.66rem;letter-spacing:.06em;padding:.4rem .8rem;border:.5px solid rgba(160,82,45,.3);color:var(--ash)}
+.excl-story{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;line-height:1.7;color:#3a3633;margin-bottom:1.5rem}
+.excl-pot{list-style:none;margin-bottom:2rem}
+.excl-pot li{font-size:.82rem;color:var(--ash);padding:.5rem 0;border-bottom:.5px solid rgba(107,101,96,.12);display:flex;gap:.75rem}
+.excl-pot li::before{content:'—';color:var(--gold)}
+.excl-actions{display:flex;gap:.75rem;flex-wrap:wrap}
+
+/* MLS */
+#mls{padding:6rem 10vw;background:var(--noir)}
+#mls .sec-sub{color:var(--sand);opacity:.7}
+.demo-banner{display:none;margin-top:2rem;padding:1rem 1.25rem;border:.5px dashed var(--gold);color:var(--gold);font-size:.78rem;line-height:1.6}
+.filters{display:grid;grid-template-columns:2fr 1.2fr 1.2fr 1fr 1fr auto;gap:.75rem;margin-top:2.5rem}
+.filters input,.filters select{background:rgba(245,240,232,.04);border:.5px solid var(--border-mid);padding:.85rem 1rem;color:var(--bone);font-size:.8rem;outline:none;min-width:0}
+.filters select option{background:var(--noir)}
+.filters input:focus,.filters select:focus{border-color:var(--gold)}
+.mls-meta{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ash);margin:2rem 0 1.25rem}
+.mls-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.mcard{background:rgba(245,240,232,.03);border:.5px solid var(--border);cursor:pointer;transition:transform .3s,border-color .3s;display:flex;flex-direction:column}
+.mcard:hover{transform:translateY(-4px);border-color:rgba(201,169,110,.45)}
+.mcard-img{height:200px;position:relative;background:linear-gradient(140deg,rgba(201,169,110,.08),rgba(160,82,45,.16));display:flex;align-items:center;justify-content:center;color:rgba(201,169,110,.3);font-size:2.4rem}
+.mcard-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mcard-type{position:absolute;top:.9rem;left:.9rem;font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;padding:.3rem .75rem;background:rgba(10,10,8,.75);color:var(--sand)}
+.mcard-body{padding:1.35rem;flex:1;display:flex;flex-direction:column}
+.mcard-city{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.mcard-addr{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--bone);margin-bottom:.4rem}
+.mcard-price{font-size:1rem;font-weight:500;color:var(--bone);margin-bottom:.65rem}
+.mcard-facts{font-size:.74rem;color:var(--sand);opacity:.7;display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
+.mcard-office{margin-top:auto;font-size:.66rem;color:var(--ash);padding-top:.85rem;border-top:.5px solid var(--border)}
+.pager{display:flex;justify-content:center;gap:.75rem;margin-top:2.5rem}
+.pager button{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;padding:.75rem 1.5rem;background:transparent;color:var(--sand);border:.5px solid var(--border-mid);cursor:pointer}
+.pager button:disabled{opacity:.3;cursor:default}
+.empty{grid-column:1/-1;text-align:center;padding:4rem 1rem;color:var(--ash);font-size:.9rem}
+.disclaimer{margin-top:3.5rem;padding-top:2rem;border-top:.5px solid var(--border);font-size:.68rem;line-height:1.75;color:var(--ash);max-width:900px}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:300;background:rgba(10,10,8,.85);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:3rem 1rem}
+.modal.open{display:flex}
+.modal-box{background:var(--warm-white);color:var(--noir);width:100%;max-width:880px;position:relative}
+.modal-close{position:absolute;top:.75rem;right:.75rem;z-index:3;width:40px;height:40px;border:none;background:rgba(10,10,8,.7);color:var(--bone);font-size:1.2rem;cursor:pointer}
+.modal-img{height:340px;position:relative;background:linear-gradient(140deg,rgba(160,82,45,.12),rgba(139,69,19,.22));display:flex;align-items:center;justify-content:center;color:rgba(160,82,45,.3);font-size:3rem}
+.modal-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.modal-body{padding:2.5rem;display:grid;grid-template-columns:1.3fr 1fr;gap:2.5rem}
+.modal-remarks{font-size:.86rem;line-height:1.85;color:#3a3633;margin:1.25rem 0}
+.modal-office{font-size:.72rem;color:var(--ash);padding-top:1rem;border-top:.5px solid rgba(107,101,96,.15)}
+.lead-form h4{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;margin-bottom:1rem}
+.lead-form input,.lead-form textarea{width:100%;background:#fff;border:.5px solid rgba(107,101,96,.25);padding:.8rem .9rem;font-size:.82rem;margin-bottom:.7rem;outline:none;color:var(--noir)}
+.lead-form input:focus,.lead-form textarea:focus{border-color:var(--terra)}
+.lead-form textarea{min-height:90px;resize:vertical}
+.lead-form .btn-primary{width:100%;background:var(--terra);color:#fff}
+.lead-form .btn-primary:hover{background:var(--noir)}
+.lead-ok{display:none;font-family:'Cormorant Garamond',serif;font-size:1.3rem;line-height:1.5;color:var(--terra)}
+
+footer{padding:3rem 10vw;border-top:.5px solid var(--border);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.72rem;color:var(--ash)}
+footer .footer-logo{font-family:'Cormorant Garamond',serif;letter-spacing:.18em;text-transform:uppercase;color:var(--bone)}
+footer .footer-logo span{color:var(--gold)}
+
+@media(max-width:1024px){
+  .mls-grid{grid-template-columns:repeat(2,1fr)}
+  .filters{grid-template-columns:1fr 1fr 1fr}
+  .excl,.excl:nth-child(even){grid-template-columns:1fr}
+  .excl:nth-child(even) .excl-media{order:0}
+  .excl-media{min-height:300px}
+}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-links,.nav-cta{display:none}
+  .nav-mobile-toggle{display:flex}
+  .p-hero{padding:8rem 1.5rem 3rem}
+  #exclusivos,#mls{padding:4rem 1.5rem}
+  .excl-body{padding:2rem 1.5rem}
+  .filters{grid-template-columns:1fr 1fr}
+  .filters input[type=search]{grid-column:1/-1}
+  .mls-grid{grid-template-columns:1fr}
+  .modal{padding:0}
+  .modal-body{grid-template-columns:1fr;padding:1.75rem 1.5rem}
+  .modal-img{height:240px}
+  .tabs{width:100%}
+  .tab{flex:1;padding:.9rem .5rem}
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="/#brand">La Marca</a>
+  <a href="/#realty">Bienes Raíces</a>
+  <a href="/propiedades">Propiedades</a>
+  <a href="/#contabilidad">Finanzas</a>
+  <a href="/#about">Rafael</a>
+</div>
+
+<nav id="mainNav">
+  <a class="nav-logo" href="/">Firme en <span>Propósito</span></a>
+  <ul class="nav-links">
+    <li><a href="/#brand">La Marca</a></li>
+    <li><a href="/#realty">Bienes Raíces</a></li>
+    <li><a href="/propiedades" class="active">Propiedades</a></li>
+    <li><a href="/#contabilidad">Finanzas</a></li>
+    <li><a href="/#about">Rafael</a></li>
+  </ul>
+  <a class="nav-cta" href="/#agenda">Agenda 1:1</a>
+  <button class="nav-mobile-toggle" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="p-hero">
+  <span class="label">FEP Bienes Raíces · Propiedades</span>
+  <h1>Propiedades con <em>historia.</em><br>Un mercado entero a tu alcance.</h1>
+  <p>Nuestros listados exclusivos, analizados y presentados con propósito. Y cuando buscas algo más, todo el inventario del MLS de Puerto Rico, en un solo lugar.</p>
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-target="exclusivos" onclick="go('exclusivos')">Exclusivos FEP</button>
+    <button class="tab" data-target="mls" onclick="go('mls')">Explorar el mercado</button>
+  </div>
+</header>
+
+<!-- ═══════════ EXCLUSIVOS FEP ═══════════ -->
+<section id="exclusivos">
+  <span class="label" style="color:var(--terra)">Listados FEP Realty</span>
+  <h2 class="sec-title">Exclusivos FEP.</h2>
+  <p class="sec-sub">Cada propiedad aquí la conocemos de primera mano. La caminamos, la analizamos y te contamos lo que puede llegar a ser.</p>
+  <div class="excl-list" id="exclList"></div>
+</section>
+
+<!-- ═══════════ MLS ═══════════ -->
+<section id="mls">
+  <span class="label">Stellar MLS · Puerto Rico</span>
+  <h2 class="sec-title">Explora el mercado.</h2>
+  <p class="sec-sub">Propiedades activas de todos los corredores del MLS. Te ayudamos con cualquiera de ellas: pregúntanos y Rafael te responde personalmente.</p>
+  <div class="demo-banner" id="demoBanner">Vista previa con <strong>datos de prueba</strong>. Estas propiedades no son reales. Se reemplazan automáticamente por el MLS cuando se conecte la API de Stellar.</div>
+
+  <form class="filters" id="filters" onsubmit="event.preventDefault();state.page=1;loadMls()">
+    <input type="search" name="q" placeholder="Buscar: casco urbano, uso mixto, vista al mar…">
+    <select name="city" id="citySel"><option value="">Todos los pueblos</option></select>
+    <select name="type">
+      <option value="">Todo tipo</option>
+      <option value="Residential">Residencial</option>
+      <option value="Residential Income">Multifamiliar / Renta</option>
+      <option value="Commercial Sale">Comercial</option>
+      <option value="Land">Terreno</option>
+    </select>
+    <input type="number" name="minPrice" placeholder="Precio mín." min="0" step="1000">
+    <input type="number" name="maxPrice" placeholder="Precio máx." min="0" step="1000">
+    <button class="btn-primary" type="submit">Buscar</button>
+  </form>
+
+  <div class="mls-meta" id="mlsMeta"></div>
+  <div class="mls-grid" id="mlsGrid"></div>
+  <div class="pager" id="pager"></div>
+
+  <!-- Reemplazar con el texto de disclaimer EXACTO que exige Stellar MLS en su acuerdo de IDX. -->
+  <p class="disclaimer" id="disclaimer">La información de los listados del MLS se considera confiable, pero no está garantizada y debe verificarse de forma independiente. Los listados marcados con el nombre de otro corredor no son de Firme en Propósito y se muestran mediante el programa IDX de Stellar MLS. <span id="updatedAt"></span></p>
+</section>
+
+<footer>
+  <div class="footer-logo">Firme en <span>Propósito</span></div>
+  <div>© <span id="yr"></span> Firme en Propósito · Puerto Rico</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box" role="dialog" aria-modal="true">
+    <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">✕</button>
+    <div class="modal-img" id="mImg">⌂</div>
+    <div class="modal-body">
+      <div>
+        <div class="excl-loc" id="mCity"></div>
+        <div class="excl-name" id="mTitle"></div>
+        <div class="excl-price" id="mPrice"></div>
+        <div class="chips" id="mChips"></div>
+        <p class="modal-remarks" id="mRemarks"></p>
+        <div class="modal-office" id="mOffice"></div>
+      </div>
+      <form class="lead-form" id="leadForm">
+        <h4>Quiero información</h4>
+        <input name="nombre" placeholder="Nombre" required>
+        <input name="email" type="email" placeholder="Email" required>
+        <input name="telefono" type="tel" placeholder="Teléfono">
+        <textarea name="mensaje" placeholder="¿Qué te gustaría saber?"></textarea>
+        <button class="btn-primary" type="submit" id="leadBtn">Enviar →</button>
+        <p class="lead-ok" id="leadOk">Recibido. Rafael te contacta personalmente pronto.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+const FORMSPREE='https://formspree.io/f/mjgjbrwv';
+const TYPE_ES={'Residential':'Residencial','Residential Income':'Multifamiliar','Commercial Sale':'Comercial','Land':'Terreno'};
+const state={page:1,listings:[],current:null};
+
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>n==null?'Precio a consultar':'$'+Number(n).toLocaleString('en-US');
+const safeUrl=u=>/^(https?:\/\/|\/)/.test(u||'')?u:'';
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+function go(id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.target===id));
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  history.replaceState(null,'','#'+id);
+}
+
+/* ── EXCLUSIVOS ───────────────────────────── */
+fetch('/data/listados-fep.json').then(r=>r.json()).then(d=>{
+  const list=document.getElementById('exclList');
+  list.innerHTML=d.listados.map((p,i)=>`
+    <article class="excl">
+      <div class="excl-media">
+        <span class="badge">${esc(p.estado)}</span>
+        <span class="badge fep">Exclusivo FEP</span>
+        ${p.foto?`<img src="${esc(safeUrl(p.foto))}" alt="${esc(p.nombre)}, ${esc(p.pueblo)}" loading="lazy">`:''}
+      </div>
+      <div class="excl-body">
+        <div class="excl-loc">${esc(p.pueblo)}, Puerto Rico</div>
+        <h3 class="excl-name">${esc(p.nombre)}</h3>
+        <div class="excl-price">${money(p.precio)}</div>
+        <div class="chips">${(p.datos||[]).map(x=>`<span class="chip">${esc(x)}</span>`).join('')}</div>
+        <p class="excl-story">${esc(p.historia)}</p>
+        <ul class="excl-pot">${(p.potencial||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+        <div class="excl-actions">
+          <button class="btn-primary" onclick="openExcl(${i})">Quiero información</button>
+          <a class="btn-ghost" href="/#agenda">Agenda 1:1</a>
+        </div>
+      </div>
+    </article>`).join('');
+  window._excl=d.listados;
+}).catch(()=>{document.getElementById('exclList').innerHTML='<p class="sec-sub">No se pudieron cargar los listados.</p>'});
+
+function openExcl(i){
+  const p=window._excl[i];
+  openModal({title:p.nombre,city:p.pueblo,price:p.precio,photo:p.foto,chips:p.datos,remarks:p.historia,office:'Listado por Firme en Propósito · FEP Realty',ref:'FEP · '+p.slug});
+}
+
+/* ── MLS ──────────────────────────────────── */
+async function loadMls(){
+  const fd=new FormData(document.getElementById('filters'));
+  const params=new URLSearchParams();
+  for(const [k,v] of fd.entries()) if(v) params.set(k,v);
+  params.set('page',state.page);
+  const grid=document.getElementById('mlsGrid');
+  grid.innerHTML='<div class="empty">Cargando propiedades…</div>';
+  try{
+    const r=await fetch('/api/mls?'+params);
+    const d=await r.json();
+    if(!r.ok) throw new Error(d.error||'Error');
+    state.listings=d.listings;
+    document.getElementById('demoBanner').style.display=d.source==='demo'?'block':'none';
+    document.getElementById('updatedAt').textContent=d.updatedAt?'Última actualización: '+new Date(d.updatedAt).toLocaleString('es-PR')+'.':'';
+    document.getElementById('mlsMeta').textContent=d.total!=null?`${d.total} propiedades activas`:'';
+    fillCities(d.listings);
+    grid.innerHTML=d.listings.length?d.listings.map((l,i)=>`
+      <div class="mcard" onclick="openMls(${i})" tabindex="0" onkeydown="if(event.key==='Enter')openMls(${i})">
+        <div class="mcard-img">⌂
+          ${l.photos&&l.photos[0]?`<img src="${esc(safeUrl(l.photos[0]))}" alt="${esc(l.address)}" loading="lazy">`:''}
+          <span class="mcard-type">${esc(TYPE_ES[l.type]||l.type)}</span>
+        </div>
+        <div class="mcard-body">
+          <div class="mcard-city">${esc(l.city)}</div>
+          <div class="mcard-addr">${esc(l.address)}</div>
+          <div class="mcard-price">${money(l.price)}</div>
+          <div class="mcard-facts">${facts(l).map(esc).join(' · ')}</div>
+          <div class="mcard-office">Listado por: ${esc(l.listOffice||'—')}</div>
+        </div>
+      </div>`).join(''):'<div class="empty">No hay propiedades con esos filtros.</div>';
+    const pager=document.getElementById('pager');
+    const pages=d.total?Math.ceil(d.total/d.pageSize):1;
+    pager.innerHTML=pages>1?`<button ${state.page<=1?'disabled':''} onclick="state.page--;loadMls()">← Anterior</button><button ${state.page>=pages?'disabled':''} onclick="state.page++;loadMls()">Siguiente →</button>`:'';
+  }catch(e){
+    grid.innerHTML='<div class="empty">No pudimos cargar el MLS en este momento. Intenta de nuevo en unos minutos.</div>';
+  }
+}
+
+const seenCities=new Set();
+function fillCities(listings){
+  const sel=document.getElementById('citySel');
+  listings.forEach(l=>{ if(l.city&&!seenCities.has(l.city)){seenCities.add(l.city);
+    const o=document.createElement('option');o.value=l.city;o.textContent=l.city;sel.appendChild(o);} });
+}
+
+function facts(l){
+  const f=[];
+  if(l.beds) f.push(l.beds+' hab.');
+  if(l.baths) f.push(l.baths+' baños');
+  if(l.sqft) f.push(Number(l.sqft).toLocaleString('en-US')+' p²');
+  if(l.acres) f.push((l.acres/0.9712).toFixed(2)+' cuerdas');
+  return f;
+}
+
+function openMls(i){
+  const l=state.listings[i];
+  openModal({title:l.address,city:l.city,price:l.price,photo:l.photos&&l.photos[0],chips:[TYPE_ES[l.type]||l.type,...facts(l)],remarks:l.remarks,office:`Listado por: ${l.listOffice||'—'}${l.listAgent?' · '+l.listAgent:''} · MLS #${l.id}`,ref:'MLS #'+l.id});
+}
+
+/* ── MODAL + LEAD ─────────────────────────── */
+function openModal(p){
+  state.current=p;
+  document.getElementById('mImg').innerHTML='⌂'+(p.photo?`<img src="${esc(safeUrl(p.photo))}" alt="">`:'');
+  document.getElementById('mCity').textContent=(p.city||'')+', Puerto Rico';
+  document.getElementById('mTitle').textContent=p.title;
+  document.getElementById('mPrice').textContent=money(p.price);
+  document.getElementById('mChips').innerHTML=(p.chips||[]).filter(Boolean).map(x=>`<span class="chip">${esc(x)}</span>`).join('');
+  document.getElementById('mRemarks').textContent=p.remarks||'';
+  document.getElementById('mOffice').textContent=p.office;
+  const f=document.getElementById('leadForm');f.reset();
+  [...f.elements].forEach(el=>el.style.display='');
+  const ok=document.getElementById('leadOk');ok.style.display='none';ok.textContent='Recibido. Rafael te contacta personalmente pronto.';
+  const btn=document.getElementById('leadBtn');btn.disabled=false;btn.textContent='Enviar →';
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+document.getElementById('leadForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const btn=document.getElementById('leadBtn');btn.disabled=true;btn.textContent='Enviando…';
+  const payload=Object.fromEntries(new FormData(this).entries());
+  payload.propiedad=`${state.current.ref} — ${state.current.title}, ${state.current.city} (${money(state.current.price)})`;
+  payload._subject='Consulta de propiedad: '+state.current.ref;
+  fetch(FORMSPREE,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
+    .then(r=>{ if(!r.ok) throw 0;
+      [...this.elements].forEach(el=>el.style.display='none');
+      document.getElementById('leadOk').style.display='block'; })
+    .catch(()=>{btn.disabled=false;btn.textContent='Enviar →';document.getElementById('leadOk').style.display='block';document.getElementById('leadOk').textContent='Hubo un error. Intenta de nuevo.'});
+});
+
+/* ── INICIO ───────────────────────────────── */
+loadMls();
+if(location.hash==='#mls') setTimeout(()=>go('mls'),300);
+</script>
+</body>
+</html>
